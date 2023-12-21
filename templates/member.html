@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <link rel="stylesheet" href="static/member.css" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='lock.ico') }}"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="mainContainer">
+      <div class="main">
+        <div class="mainbox">
+          <div class="container">
+            <div class="titleBox">
+              <p class="text">Welcome<br />This is the Page for Members</p>
+            </div>
+            <div class="infoContainer">
+              <p class="text" id="welcomeMessage"></p>
+              <p class="text">Welcome to the system.</p>
+            </div>
+          </div>
+          <div class="container">
+            <div class="titleBox">
+              <p class="text">Leave a Message</p>
+            </div>
+            <div class="content">
+              <input
+                type="text"
+                class="inputbox"
+                id="message"
+                name="message"
+                placeholder="My Message"
+              />
+            </div>
+            <div class="content">
+              <button type="button" id="submitButton">Submit</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mainbox">
+          <div class="messageContainer">
+            <div class="titleBox">
+              <p class="text">Message Board</p>
+            </div>
+            <ul>
+              {% for message in messages %}
+              <p>
+                {{ message.name }}: {{ message.content }} {% if
+                message.member_id == member_id %}
+                <button
+                  class="deleteButton"
+                  data-message-content="{{ message['id'] }}"
+                >
+                  X
+                </button>
+                {% endif %}
+              </p>
+              {% endfor %}
+            </ul>
+            <div id="messageContainer"></div>
+          </div>
+        </div>
+
+        <div class="mainbox">
+          <div class="container queryData">
+            <div class="titleBox">
+              <p class="text">Query Member Account Information</p>
+            </div>
+            <div class="content">
+              <input
+                type="text"
+                class="inputbox"
+                id="memberAccount"
+                name="memberAccount"
+                placeholder="Member Account"
+              />
+            </div>
+            <div class="content">
+              <button type="button" id="queryButton">Query</button>
+            </div>
+            <div class="content">
+              <div id="resultDiv"></div>
+            </div>
+          </div>
+
+          <div class="container queryData">
+            <div class="titleBox">
+              <p class="text">Change my Name</p>
+            </div>
+            <div class="content">
+              <input
+                type="text"
+                class="inputbox"
+                id="changeName"
+                name="changeName"
+                placeholder="My New Name"
+              />
+            </div>
+            <div class="content">
+              <button type="button" id="changeNameButton">Change</button>
+            </div>
+            <div class="content">
+              <div id="changeResultDiv"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="signoutButton">
+        <a href="/signout">Sign out</a>
+      </div>
+    </div>
+    <script>
+      let currentName = "{{ session['name'] }}";
+    </script>
+    <script src="{{ url_for('static', filename='member.js') }}"></script>
+  </body>
+</html>

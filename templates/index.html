@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login System</title>
+    <link rel="stylesheet" href="static/style.css" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='lock.ico') }}"
+    />
+  </head>
+  <body>
+    <div class="mainContainer">
+      <div class="container">
+        <div class="titleBox">
+          <p class="text">
+            Welcome~ <br />
+            Please Register or Sign in to the System
+          </p>
+        </div>
+        <div class="infoContainer">
+          <div class="content">
+            <p class="text">Register Account</p>
+          </div>
+          <form
+            action="/signup"
+            method="post"
+            onsubmit="return validateFormForSignup()"
+          >
+            <div class="content">
+              <input
+                type="text"
+                class="inputbox"
+                id="registerName"
+                name="registerName"
+                placeholder="Name"
+              />
+            </div>
+            <div class="content">
+              <input
+                type="text"
+                class="inputbox"
+                id="registerUsername"
+                name="registerUsername"
+                placeholder="Username"
+              />
+            </div>
+            <div class="content">
+              <input
+                type="password"
+                class="inputbox"
+                id="registerPassword"
+                name="registerPassword"
+                placeholder="Password"
+              />
+            </div>
+            <div class="content">
+              <button type="submit" id="submitButton">Sign up</button>
+            </div>
+            <p
+              id="errorTextForSignup"
+              class="errorMessage"
+              style="display: none"
+            >
+              Please Enter Complete Information
+            </p>
+          </form>
+        </div>
+      </div>
+      <div class="container">
+        <div class="titleBox">
+          <p class="text">Sign in System</p>
+        </div>
+        <form
+          action="/signin"
+          method="post"
+          onsubmit="return validateFormForSignin()"
+        >
+          <div class="content">
+            <input
+              type="text"
+              class="inputbox"
+              id="signinUsername"
+              name="signinUsername"
+              placeholder="Username"
+            />
+          </div>
+          <div class="content">
+            <input
+              type="password"
+              class="inputbox"
+              id="signinPassword"
+              name="signinPassword"
+              placeholder="Password"
+            />
+          </div>
+          <div class="content">
+            <button type="submit">Sign in</button>
+          </div>
+          <p
+            class="errorMessage"
+            id="errorTextForSignin"
+            style="display: none"
+          ></p>
+        </form>
+      </div>
+    </div>
+    <script src="static/script.js"></script>
+  </body>
+</html>
