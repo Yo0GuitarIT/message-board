@@ -109,7 +109,7 @@ changeResult.style.display = "none";
 
 changeNameButton.addEventListener("click", async () => {
   const newName = document.getElementById("changeName").value;
-  const apiUrl = "http://127.0.0.1:3000/api/member";
+  const apiUrl = "/api/member";
   const requestOptions = {
     method: "PATCH",
     headers: {

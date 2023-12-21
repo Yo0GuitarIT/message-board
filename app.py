@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import pymysql
-import time
 
 app = Flask(__name__)
 app.secret_key = "Yo0_secret_key"
@@ -173,4 +172,4 @@ def member_api():
 
 
 if __name__ == "__main__":
-    app.run(port=3000, debug=True)
+    app.run(host="0.0.0.0", port=3000, debug=True)
